@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeScreenActivity : Activity() {
@@ -12,8 +13,9 @@ class HomeScreenActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
-        getWindow().setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        cvBreakfastCard.setOnClickListener() {
+            val recipeList = Intent(this, RecipeListActivity::class.java)
+            startActivity(recipeList)
+        }
     }
 }
