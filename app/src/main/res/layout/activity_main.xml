@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context=".MainActivity">
     <ImageView
         android:layout_width="match_parent"
@@ -42,6 +42,7 @@
             android:hint="Password" />
 
         <TextView
+            android:id="@+id/havingTrouble"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Having Trouble?"
