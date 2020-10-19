@@ -32,14 +32,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Email Address" />
+            android:hint="Email Address"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/loginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Password" />
+            android:hint="Password"
+            android:inputType="textPassword"/>
 
         <TextView
             android:id="@+id/havingTrouble"
