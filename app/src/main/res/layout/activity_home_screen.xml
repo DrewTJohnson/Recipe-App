@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,10 +9,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_background"
+        android:src="@drawable/ic_background_alt"
         android:scaleType="center" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
@@ -21,12 +21,15 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="What's the Meal?"
             android:textColor="@android:color/black"
             android:textSize="36sp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/cvBreakfastCard"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBreakfastCard"
@@ -35,7 +38,10 @@
             android:layout_marginTop="10dp"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="5dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,12 +69,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvLunchCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="5dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvBreakfastCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,12 +106,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvDinnerCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="5dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvLunchCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -129,12 +143,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvDessertCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="5dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvDinnerCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -162,6 +180,18 @@
         </androidx.cardview.widget.CardView>
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include layout="@layout/menu_button" />
+
     </LinearLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

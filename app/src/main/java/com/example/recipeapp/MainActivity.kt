@@ -14,6 +14,8 @@ import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : Activity() {
@@ -39,6 +41,8 @@ class MainActivity : Activity() {
         resetPasswordTV = havingTrouble
 
         auth = FirebaseAuth.getInstance()
+
+        checkCurrentUser()
 
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -73,7 +77,18 @@ class MainActivity : Activity() {
         resetPasswordTV.setOnClickListener {
             val resetPassword = Intent(this, ResetPasswordActivity::class.java)
             startActivity(resetPassword)
+        }
+    }
+
+    private fun checkCurrentUser() {
+        val user = Firebase.auth.currentUser
+        if(user != null) {
+            val intent = Intent(this, HomeScreenActivity::class.java)
+            startActivity(intent)
             finish()
+            //user is signed in
+        } else {
+            //user is not signed in
         }
     }
 }
