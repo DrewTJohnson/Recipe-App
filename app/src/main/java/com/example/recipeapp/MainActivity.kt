@@ -67,6 +67,13 @@ class MainActivity : Activity() {
         btnSignUp.setOnClickListener() {
             val signUp = Intent(this, SignUpActivity::class.java)
             startActivity(signUp)
+            finish()
+        }
+
+        resetPasswordTV.setOnClickListener {
+            val resetPassword = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(resetPassword)
+            finish()
         }
     }
 }
