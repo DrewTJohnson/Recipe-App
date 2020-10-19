@@ -1,15 +1,16 @@
 package com.example.recipeapp
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Transition
+import android.transition.TransitionManager
 import android.util.Property
-import android.view.MotionEvent
-import android.view.View
-import android.view.WindowManager
+import android.view.*
+import androidx.core.view.isVisible
+import androidx.transition.Fade
+import androidx.transition.Slide
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_button.*
@@ -24,17 +25,20 @@ class HomeScreenActivity : Activity() {
             startActivity(recipeList)
         }
 
-//        menuButton.setOnClickListener() {
-//            buttonGrow()
-//        }
+        menuButton.setOnClickListener() {
+            toggle()
+        }
     }
 
-    private fun buttonGrow() {
-        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 10f)
-        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 10f)
+    private fun toggle() {
+        val bottomNav : View = bottomNavigation
+        val homeView : ViewGroup = mainView
 
-        val animator = ObjectAnimator.ofPropertyValuesHolder(menuButton, scaleX, scaleY)
+        var transition: Transition = Fade
+        transition.setDuration(600)
+        transition.addTarget(bottomNav)
 
-        animator.start()
+        TransitionManager.beginDelayedTransition(homeView, transition)
+        bottomNav.visibility = View.VISIBLE
     }
 }
