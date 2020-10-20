@@ -2,22 +2,11 @@ package com.example.recipeapp
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Transition
-import android.transition.TransitionManager
-import android.util.Property
 import android.view.*
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
-import android.widget.Toast
-import androidx.core.view.ViewCompat.animate
-import androidx.core.view.isVisible
-import androidx.transition.Fade
-import androidx.transition.Slide
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottom_navigation.*
 import kotlinx.android.synthetic.main.menu_button.*
 
 class HomeScreenActivity : Activity() {
