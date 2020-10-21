@@ -1,21 +1,38 @@
 package com.example.recipeapp
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.TranslateAnimation
+import android.widget.Toast
 import kotlinx.android.synthetic.main.bottom_navigation.*
 import kotlinx.android.synthetic.main.menu_button.*
+import okhttp3.*
+import java.io.IOException
 
 class RecipeListActivity : Activity() {
 
     private val isUp: Boolean = false
     private val isClickable: Boolean = false
 
+    private val client = OkHttpClient()
+
+    private val token = "f6f7f9802723fecea4632db9f05fbf89"
+
+    companion object {
+        var QUERY = "query"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_list)
+
+        setQuery()
+
+        run("https://api.edamam.com/search?q=&mealType=${QUERY}&app_id=0388079f&app_key=${token}")
 
         bottomNavigation.visibility = View.INVISIBLE
         isUp
@@ -30,6 +47,29 @@ class RecipeListActivity : Activity() {
             slideDown()
             menuCloseButton.isClickable = isClickable
         }
+    }
+
+    fun setQuery() {
+            if(intent != null) {
+                QUERY = intent.getStringExtra(QUERY).toString()
+        } else {
+            Log.e("Cancelled", "Cancelled")
+            Toast.makeText(this, "Didn't work", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+
+    fun run(url: String) {
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) { }
+
+            override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
+        })
     }
 
 

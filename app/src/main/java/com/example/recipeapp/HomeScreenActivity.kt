@@ -15,6 +15,7 @@ class HomeScreenActivity : Activity() {
     private val isUp: Boolean = false
     private val isClickable: Boolean = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
@@ -24,6 +25,22 @@ class HomeScreenActivity : Activity() {
 
         cvBreakfastCard.setOnClickListener() {
             val recipeList = Intent(this, RecipeListActivity::class.java)
+            recipeList.putExtra(RecipeListActivity.QUERY, tvBreakfastTitle.text.toString())
+            startActivity(recipeList)
+        }
+        cvLunchCard.setOnClickListener() {
+            val recipeList = Intent(this, RecipeListActivity::class.java)
+            recipeList.putExtra(RecipeListActivity.QUERY, tvLunchTitle.text.toString())
+            startActivity(recipeList)
+        }
+        cvDinnerCard.setOnClickListener() {
+            val recipeList = Intent(this, RecipeListActivity::class.java)
+            recipeList.putExtra(RecipeListActivity.QUERY, tvDinnerTitle.text.toString())
+            startActivity(recipeList)
+        }
+        cvDessertCard.setOnClickListener() {
+            val recipeList = Intent(this, RecipeListActivity::class.java)
+            recipeList.putExtra(RecipeListActivity.QUERY, tvDessertTitle.text.toString())
             startActivity(recipeList)
         }
 
